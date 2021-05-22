@@ -1,7 +1,7 @@
 const Products = () => {
     return (
       <div>
-        <a className="btn btn-success" href="#">INVOICE LIST</a>
+        <a className="btn btn-success" href="/invoice">INVOICE LIST</a>
         <div className="row mt-2">
           <div className="col-md-4">
             <table class="table">
@@ -101,7 +101,7 @@ const Products = () => {
                   </tr>
                 </tbody>
               </table>
-              <a className="btn btn-success" href="#">CREATE INVOICE</a>
+              <a className="btn btn-success" href="/invoice">CREATE INVOICE</a>
             </div>
           </div>
         </div>

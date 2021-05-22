@@ -45,7 +45,7 @@ const Print = () => {
               </table>
             </div>
             <div className="button">
-                <a className="btn btn-primary" href="#"><i className="fa fa-long-arrow-alt-left"></i> BACK TO INVOICE LIST</a>
+                <a className="btn btn-primary" href="/invoice"><i className="fa fa-long-arrow-alt-left"></i> BACK TO INVOICE LIST</a>
                 <a className="btn btn-success float-right" href="#"><i className="fa fa-print"></i> PRINT INVOICE</a>
             </div>
         </div>
