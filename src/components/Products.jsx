@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 const Products = () => {
     return (
       <div>
-        <a className="btn btn-success" href="/invoice">INVOICE LIST</a>
+        <Link className="btn btn-success" to="/invoice">INVOICE LIST</Link>
         <div className="row mt-2">
           <div className="col-md-4">
             <table class="table">
@@ -101,7 +102,7 @@ const Products = () => {
                   </tr>
                 </tbody>
               </table>
-              <a className="btn btn-success" href="/invoice">CREATE INVOICE</a>
+              <Link className="btn btn-success" to="/invoice">CREATE INVOICE</Link>
             </div>
           </div>
         </div>

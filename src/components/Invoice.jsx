@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 const Invoice = () => {
     return (
         <div className="container">
-            <a className="btn btn-success" href="/">CREATE NEW INVOICE</a>
+            <Link className="btn btn-success" to="/">CREATE NEW INVOICE</Link>
             <div className="table mt-4 font-weight-light">
                 <table class="table">
                     <thead>
@@ -36,7 +37,7 @@ const Invoice = () => {
                         </tr>
                     </tbody>
                 </table>
-                <a className="btn btn-primary" href="/print">PRINT INVOICE</a>
+                <Link className="btn btn-primary" to="/print">PRINT INVOICE</Link>
             </div>
         </div>
     );

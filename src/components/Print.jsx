@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 const Print = () => {
     return(
         <div className="container">
@@ -45,8 +46,8 @@ const Print = () => {
               </table>
             </div>
             <div className="button">
-                <a className="btn btn-primary" href="/invoice"><i className="fa fa-long-arrow-alt-left"></i> BACK TO INVOICE LIST</a>
-                <a className="btn btn-success float-right" href="#"><i className="fa fa-print"></i> PRINT INVOICE</a>
+                <Link className="btn btn-primary" to="/invoice"><i className="fa fa-long-arrow-alt-left"></i> BACK TO INVOICE LIST</Link>
+                <button onclick="window.print()" className="btn btn-success float-right"><i className="fa fa-print"></i> PRINT INVOICE</button>
             </div>
         </div>
     );
