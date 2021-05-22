@@ -1,10 +1,13 @@
 import Products from "./Products"
 
+// import Invoice from "./Invoice"
+
+
 const Body = () => {
     return(
         <div className="container-fluid mt-2">
-            <a className="btn btn-success" href="#">INVOICE LIST</a>
             <Products />
+            {/* <Invoice /> */}
         </div>
     );
 }
