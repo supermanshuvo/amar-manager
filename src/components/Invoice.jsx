@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 const Invoice = () => {
     return (
         <div className="container">
-            <Link className="btn btn-success" to="/">CREATE NEW INVOICE</Link>
+            <Link className="btn btn-success" to="/product">CREATE NEW INVOICE</Link>
             <div className="table mt-4 font-weight-light">
                 <table class="table">
                     <thead>
