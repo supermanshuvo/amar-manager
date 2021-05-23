@@ -27,7 +27,7 @@ const Invoice = () => {
                             <td>৳ 175.00</td>
                         </tr>
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">2</th>
                             <td>Shuvo</td>
                             <td>01303316865</td>
                             <td>02/05/2021</td>

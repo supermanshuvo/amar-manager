@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Products from "./Products"
-
 import Print from "./Print"
-
 import Invoice from "./Invoice"
 import Home from './Home';
 import Header from './Header';
