@@ -85,7 +85,7 @@ const Products = () => {
                       <td>19 Pcs</td>
                       <td>108</td>
                       <td>120</td>
-                      <td><i className="fa fa-trash-alt"></i></td>
+                      <td><button className="btn btn-danger">Delete <i className="fa fa-trash-alt"></i></button></td>
                   </tr>
                   <tr className="font-weight-bold">
                     <th>Total Items: 1</th>
