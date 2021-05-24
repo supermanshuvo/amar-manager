@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 const Products = () => {
+  var customerData = localStorage.getItem("customer");
+  var customer = JSON.parse(customerData);
+  var stockData = localStorage.getItem("stock");
+  var stock = JSON.parse(stockData);
     return (
       <div>
         <Link className="btn btn-success" to="/invoice">INVOICE LIST</Link>
         <div className="row mt-2">
-          <div className="col-md-4">
+          <div className="col-md-5">
             <table class="table">
               <thead class="bg-primary">
                 <tr>
@@ -15,49 +19,29 @@ const Products = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">Miniket Rice - Regular</th>
-                  <td>589 KG</td>
-                  <td>61.5</td>
-                  <td>65.4</td>
-                </tr>
-                <tr>
-                  <th scope="row">Lux Beauty Soap(Rose) - 125g</th>
-                  <td>19 Pcs</td>
-                  <td>30.78	</td>
-                  <td>35</td>
-                </tr>
-                <tr>
-                  <th scope="row">Rupchanda Soyabean Oil - 1 Ltr</th>
-                  <td>12 Pcs</td>
-                  <td>128</td>
-                  <td>140</td>
-                </tr>
-                <tr>
-                  <th scope="row">Radhuni Termaric Powder - 100g</th>
-                  <td>8 Pcs</td>
-                  <td>29</td>
-                  <td>35</td>
-                </tr>
-                <tr>
-                  <th scope="row">Pran Chinigura Rice - 1KG</th>
-                  <td>19 Pcs</td>
-                  <td>108</td>
-                  <td>120</td>
-                </tr>
+                {stock.map(stock => {
+                  return(
+                    <tr>
+                      <th scope="row">{stock.product_name}</th>
+                      <td>{stock.product_quantity} {stock.product_unit}</td>
+                      <td>{stock.product_purchase}</td>
+                      <td>{stock.product_sale}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
-          <div className="col-md-8">
+          <div className="col-md-7">
             <div className="col-md-8 float-left">
               <h5>Select Customer</h5>
               <select class="form-control" id="exampleFormControlSelect1">
                 <option>Please Select Customer</option>
-                <option> Asif Salman Malik - 01770810050 </option>
-                <option> Mahamudur Rahaman - 01915787135 </option>
-                <option> Dolon Banerjee - 01920696102 </option>
-                <option> Aktaruzzaman Swopwon - 01770810050 </option>
-                <option> Shuvo - 01303316865 </option>
+                {customer.map(customer =>{
+                  return(
+                    <option>{customer.name} - {customer.mobile}</option>
+                  );
+                })}
               </select>
             </div>
             <div className="col-md-4 float-right">
