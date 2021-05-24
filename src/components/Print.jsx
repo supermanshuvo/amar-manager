@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 const Print = () => {
+  const invoicePdf= () => {
+    var printContents = document.getElementById("printArea").innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+  }
     return(
         <div className="container">
+          <div id="printArea">
             <div className="text-center">
                 <h2 className="font-weight-bold">A. R. Electric & Electronics</h2>
                 <p>2F, Porimal Tower, N.S. Road, Kushtia - 7400. <br />Contact: 01711-236456, 01848-455987</p>
@@ -45,9 +53,10 @@ const Print = () => {
                 </tbody>
               </table>
             </div>
+          </div>
             <div className="button">
                 <Link className="btn btn-primary" to="/invoice"><i className="fa fa-long-arrow-alt-left"></i> BACK TO INVOICE LIST</Link>
-                <button onclick="window.print()" className="btn btn-success float-right"><i className="fa fa-print"></i> PRINT INVOICE</button>
+                <button onClick={invoicePdf} className="btn btn-success float-right"><i className="fa fa-print"></i> PRINT INVOICE</button>
             </div>
         </div>
     );
