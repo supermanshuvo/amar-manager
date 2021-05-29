@@ -1,90 +1,85 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { userTable} from "react-table";
-const Invoice = () => {
-    var count = 0;
-    var invoice = localStorage.getItem("invoice");
-    var invoice = JSON.parse(invoice);
-    if(!invoice.length){
-        return(
-            <div className="container">
-            <Link className="btn btn-success" to="/product">CREATE NEW INVOICE</Link>
-            <div className="table mt-4 font-weight-light">
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Invoice ID</th>
-                            <th scope="col">Customer Name</th>
-                            <th scope="col">Contact No.</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">Products</th>
-                            <th scope="col">Amount</th>
-                        </tr>
-                    </thead>
-                </table>
-                        <h3 colspan="4" className="text-center">There is no data</h3>
-                <Link className="btn btn-primary" to="/print">PRINT INVOICE</Link>
-            </div>
-        </div>
-        );
-    }else{
-        return (
-            <div className="container">
-                <Link className="btn btn-success" to="/product">CREATE NEW INVOICE</Link>
-                <div className="table mt-4 font-weight-light">
-                    <table className="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Invoice ID</th>
-                                <th scope="col">Customer Name</th>
-                                <th scope="col">Contact No.</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Time</th>
-                                <th scope="col">Products</th>
-                                <th scope="col">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Asif Salman Malik</td>
-                                <td>01770810050</td>
-                                <td>22/05/2021</td>
-                                <td>03:16 PM</td>
-                                <td>2</td>
-                                <td>৳ 175.00</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Shuvo</td>
-                                <td>01303316865</td>
-                                <td>02/05/2021</td>
-                                <td>02:16 PM</td>
-                                <td>1</td>
-                                <td>৳ 115.00</td>
-                            </tr>
-                            {invoice.map(invoice => {
-                                console.log(count);
-                                return(
-                                    <tr  key={invoice}>
-                                        <th scope="row">{invoice.invoice_id}</th>
-                                        <td>{invoice.invoice_customer.name}</td>
-                                        <td>{invoice.invoice_customer.mobile}</td>
-                                        <td>{invoice.invoice_date}</td>
-                                        <td>{invoice.invoice_time}</td>
-                                        <td>{invoice.invoice_items[count].cart_qty}</td>
-                                        <td>৳ {(invoice.invoice_items[count].product_sale * invoice.invoice_items[count].cart_qty)}</td>
-                                    </tr>
+import { useTable } from 'react-table';
 
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                    <Link className="btn btn-primary" to="/print">PRINT INVOICE</Link>
-                </div>
-            </div>
-        );
-    }
+
+const Invoice = () => {
+    var invoices = localStorage.getItem("invoice");
+    var invoice = JSON.parse(invoices);
+    
+
+    const column = [
+        {
+            Header : 'Invoice ID',
+            accessor : 'invoice_id',
+        },
+        {
+            Header : 'Customer Name',
+            accessor : 'invoice_customer.name',
+        },
+        {
+            Header : 'Contact No.',
+            accessor : 'invoice_customer.mobile',
+        },
+        {
+            Header : 'Date',
+            accessor : 'invoice_date',
+        },
+        {
+            Header : 'Time',
+            accessor : 'invoice_time',
+        },
+        {
+            Header : 'Products',
+            accessor : 'invoice_items[0].cart_qty',
+        },
+        {
+            Header : 'Amount',
+            accessor : 'invoice_items[0].product_sale',
+        }
+    ]
+    const columns = useMemo(() => column,[])
+    const data = useMemo(() => invoice,[])
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow
+      } = useTable({
+        columns,
+        data
+    })
+    return (
+        <div className="container">
+            <Link className="btn btn-success btn-sm mb-5 mt-2" to="/product">CREATE NEW INVOICE</Link>
+            <table className="table" {...getTableProps()}>
+                <thead>
+                {headerGroups.map(headerGroup => (
+                    <tr {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map(column => (
+                        <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                    ))}
+                    </tr>
+                ))}
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                {rows.map(row => {
+                    prepareRow(row)
+                    return (
+                    <tr {...row.getRowProps()}>
+                        {row.cells.map(cell => {
+                        return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                        })}
+                    </tr>
+                    )
+                })}
+                </tbody>
+            </table>
+            <Link className="btn btn-primary btn-sm mt-2" to="/print">PRINT INVOICE</Link>
+        </div>
+
+    );
 }
 
 export default Invoice;
