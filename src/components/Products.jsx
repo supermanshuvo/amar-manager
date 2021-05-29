@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useMemo } from 'react';
 import { useTable } from 'react-table';
+import Order from './Order';
 const Products = () => {
   var customerData = localStorage.getItem("customer");
   var customer = JSON.parse(customerData);
@@ -35,11 +36,11 @@ const Products = () => {
                 prepareRow
               } = useTable({
                 columns,
-                data
-            })  
+                data,
+            }) 
     return (
       <div>
-        <Link className="btn btn-success" to="/invoice">INVOICE LIST</Link>
+        <Link className="btn btn-success btn-sm" to="/invoice">INVOICE LIST</Link>
         <div className="row mt-2">
           <div className="col-md-5">
           <table className="table table-hover" {...getTableProps()}>
@@ -87,40 +88,8 @@ const Products = () => {
               </div>
             </div>
             <div className="col-*-12 mt-4">
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                  <th scope="col">Product Name</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Sale Rate</th>
-                    <th scope="col">Sub Total</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Pran Chinigura Rice - 1KG</th>
-                      <td>19 Pcs</td>
-                      <td>108</td>
-                      <td>120</td>
-                      <td><button className="btn btn-danger">Delete <i className="fa fa-trash-alt"></i></button></td>
-                  </tr>
-                  <tr className="font-weight-bold">
-                    <th>Total Items: 1</th>
-                    <td colSpan="2">Total</td>
-                    <td>৳ 35.00</td>
-                  </tr>
-                  <tr>
-                    <td colSpan="3">Discount</td>
-                    <td><input type="text" name="discount" id="discount" placeholder="0.00"/></td>
-                  </tr>
-                  <tr>
-                    <td colSpan="3">Grand Total</td>
-                    <td>৳ 105.00</td>
-                  </tr>
-                </tbody>
-              </table>
-              <Link className="btn btn-success" to="/invoice">CREATE INVOICE</Link>
+                <Order />
+              <Link className="btn btn-success btn-sm" to="/invoice">CREATE INVOICE</Link>
             </div>
           </div>
         </div>

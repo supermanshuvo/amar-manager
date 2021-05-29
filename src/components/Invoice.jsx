@@ -6,8 +6,6 @@ import { useTable } from 'react-table';
 const Invoice = () => {
     var invoices = localStorage.getItem("invoice");
     var invoice = JSON.parse(invoices);
-    
-
     const column = [
         {
             Header : 'Invoice ID',
