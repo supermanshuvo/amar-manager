@@ -2,7 +2,7 @@ import React from 'react';
 export class PrintArea extends React.PureComponent {
     render() {
       return (
-            <div id="printArea" style={{margin:"5em"}}>
+            <div id="printArea" style={{margin:"2em"}}>
                 <div className="text-center">
                     <h2 className="font-weight-bold">A. R. Electric & Electronics</h2>
                     <p>2F, Porimal Tower, N.S. Road, Kushtia - 7400. <br />Contact: 01711-236456, 01848-455987</p>

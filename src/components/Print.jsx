@@ -12,11 +12,11 @@ const Print = () => {
 
   return (
         <div className="container">
-          <PrintArea ref={componentRef} />
-            <div className="button mb-3">
-                <Link className="btn btn-primary" to="/invoice"><i className="fa fa-long-arrow-alt-left"></i> BACK TO INVOICE LIST</Link>
-                <button onClick={handlePrint} className="btn btn-success float-right"><i className="fa fa-print"></i> PRINT INVOICE</button>
+            <div className="button">
+                <Link className="btn btn-primary btn-sm" to="/invoice"><i className="fa fa-long-arrow-alt-left"></i> BACK TO INVOICE LIST</Link>
+                <button onClick={handlePrint} className="btn btn-success float-right btn-sm"><i className="fa fa-print"></i> PRINT INVOICE</button>
             </div>
+          <PrintArea ref={componentRef} />
         </div>
     );
 }

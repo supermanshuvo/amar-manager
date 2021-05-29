@@ -53,7 +53,7 @@ const Invoice = () => {
     return (
         <div className="container">
             <Link className="btn btn-success btn-sm mb-5 mt-2" to="/product">CREATE NEW INVOICE</Link>
-            <table className="table" {...getTableProps()}>
+            <table className="table table-hover" {...getTableProps()}>
                 <thead>
                 {headerGroups.map(headerGroup => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
