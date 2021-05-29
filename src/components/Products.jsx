@@ -9,8 +9,8 @@ const Products = () => {
         <Link className="btn btn-success" to="/invoice">INVOICE LIST</Link>
         <div className="row mt-2">
           <div className="col-md-5">
-            <table class="table">
-              <thead class="bg-primary">
+            <table className="table table-hover">
+              <thead className="bg-primary">
                 <tr>
                   <th scope="col">Product Name</th>
                   <th scope="col">Quantity</th>
@@ -53,7 +53,7 @@ const Products = () => {
               </div>
             </div>
             <div className="col-*-12 mt-4">
-              <table class="table">
+              <table className="table table-hover">
                 <thead>
                   <tr>
                   <th scope="col">Product Name</th>

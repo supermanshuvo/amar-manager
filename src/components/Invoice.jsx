@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { userTable} from "react-table";
 const Invoice = () => {
     var count = 0;
     var invoice = localStorage.getItem("invoice");
@@ -8,7 +9,7 @@ const Invoice = () => {
             <div className="container">
             <Link className="btn btn-success" to="/product">CREATE NEW INVOICE</Link>
             <div className="table mt-4 font-weight-light">
-                <table class="table">
+                <table className="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Invoice ID</th>
@@ -31,7 +32,7 @@ const Invoice = () => {
             <div className="container">
                 <Link className="btn btn-success" to="/product">CREATE NEW INVOICE</Link>
                 <div className="table mt-4 font-weight-light">
-                    <table class="table">
+                    <table className="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Invoice ID</th>
@@ -65,7 +66,7 @@ const Invoice = () => {
                             {invoice.map(invoice => {
                                 console.log(count);
                                 return(
-                                    <tr>
+                                    <tr  key={invoice}>
                                         <th scope="row">{invoice.invoice_id}</th>
                                         <td>{invoice.invoice_customer.name}</td>
                                         <td>{invoice.invoice_customer.mobile}</td>
