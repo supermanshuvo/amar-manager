@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useMemo,useState } from 'react';
 import { useTable, useRowSelect } from 'react-table';
 import Order from './Order';
 import { Checkbox } from './Checkbox'
@@ -55,11 +55,21 @@ const Products = () => {
               ])
             }
           )
-    const selectedItem = selectedFlatRows.map(row => row.original)
+    /* const selectedItem = selectedFlatRows.map(row => row.original)
     console.log(selectedItem);
     const selectOption = () => {
       console.log('I am click in option select');
-    }
+    } */
+
+    const selectItem = selectedFlatRows.map(row => row.original);
+    const array = [];
+    array.push(selectItem);
+    var indexLen = array.length;
+    indexLen--;
+    console.log(array[indexLen]);
+
+
+
     return (
       <div>
         <Link className="btn btn-success btn-sm" to="/invoice">INVOICE LIST</Link>
@@ -76,10 +86,10 @@ const Products = () => {
                 ))}
                 </thead>
                 <tbody {...getTableBodyProps()}>
-                {rows.map(row => {
+                {rows.map((row, index) => {
                     prepareRow(row)
                     return (
-                    <tr key={row} {...row.getRowProps()}>
+                    <tr key={index} {...row.getRowProps()}>
                         {row.cells.map(cell => {
                         return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                         })}
@@ -92,11 +102,11 @@ const Products = () => {
           <div className="col-md-7">
             <div className="col-md-8 float-left">
               <h5>Select Customer</h5>
-              <select className="form-control" id="exampleFormControlSelect1" onClick={selectOption}>
+              <select className="form-control" id="Select" >
                 <option>Please Select Customer</option>
-                {customer.map(customer =>{
+                {customer.map((customer, index) =>{
                   return(
-                    <option value={customer.name}>{customer.name} - {customer.mobile}</option>
+                    <option value={customer.name} key={index}>{customer.name} - {customer.mobile}</option>
                   );
                 })}
               </select>
